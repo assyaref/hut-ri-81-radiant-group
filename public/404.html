@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages SPA fallback.
+      // Maps a clean path (e.g. /hut-ri-81-radiant-group/competitions)
+      // into the hash route (/#/competitions) so deep links keep working.
+      (function () {
+        var base = '/hut-ri-81-radiant-group/';
+        var path = window.location.pathname || '';
+        var target = base;
+        if (path.indexOf(base) === 0) {
+          target = base + '#/' + path.slice(base.length).replace(/^\/+/, '');
+        }
+        window.location.replace(target);
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+  </body>
+</html>
