@@ -30,6 +30,9 @@ if (!API_URL) {
   console.warn('VITE_API_URL is not set. Please check your .env file.');
 }
 
+// Fallback URL to prevent app crash if API_URL is missing
+const safeAPIURL = API_URL || 'https://example.com/api';
+
 const TOKEN_KEY = 'hutri81_token';
 
 export const tokenStore = {
@@ -65,7 +68,7 @@ interface RequestOptions {
 }
 
 async function request<T>({ method = 'GET', action, params, body }: RequestOptions): Promise<ApiEnvelope<T>> {
-  const url = new URL(API_URL);
+  const url = new URL(safeAPIURL);
   url.searchParams.set('action', action);
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
