@@ -78,7 +78,12 @@ async function request<T>({ method = 'GET', action, params, body }: RequestOptio
   const token = tokenStore.get();
   if (token) url.searchParams.set('token', token);
 
-  const init: RequestInit = { method, headers: { 'Content-Type': 'application/json' } };
+  // Use a CORS-simple Content-Type. Sending `application/json` triggers a
+  // preflight (OPTIONS) request that Google Apps Script Web Apps do not
+  // reliably answer. `text/plain;charset=UTF-8` keeps the request "simple"
+  // (no preflight) while still carrying a JSON string body that GAS parses
+  // from e.postData.contents via JSON.parse.
+  const init: RequestInit = { method, headers: { 'Content-Type': 'text/plain;charset=UTF-8' } };
   if (body) init.body = JSON.stringify({ ...body, token });
 
   let response: Response;
