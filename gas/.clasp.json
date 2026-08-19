@@ -1,0 +1,17 @@
+{
+  "scriptId": "1A4_wpgZ1PZGbXA_an9Str_vslFacv5AJJmDN338VCw9OmVYt3HnqW3c9",
+  "rootDir": "",
+  "projectId": "clasp open",
+  "scriptExtensions": [
+    ".js",
+    ".gs"
+  ],
+  "htmlExtensions": [
+    ".html"
+  ],
+  "jsonExtensions": [
+    ".json"
+  ],
+  "filePushOrder": [],
+  "skipSubdirectories": false
+}
